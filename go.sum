@@ -1,0 +1,4 @@
+github.com/hebl/gofa v1.19.1 h1:/aVMeT0MXDrq5oMdTAKn1qyfIFlsDKvzx8DDLnsEx9s=
+github.com/hebl/gofa v1.19.1/go.mod h1:UmDlahQBVbigXqA+ghdTtaXADoyQSWeiW+7nEB86HXU=
+gonum.org/v1/gonum v0.16.0 h1:5+ul4Swaf3ESvrOnidPp4GZbzf0mxVQpDCYUQE7OJfk=
+gonum.org/v1/gonum v0.16.0/go.mod h1:fef3am4MQ93R2HHpKnLk4/Tbh/s0+wqD5nfa6Pnwy4E=

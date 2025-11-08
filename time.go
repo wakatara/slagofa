@@ -172,3 +172,6 @@ func Gmsta(ut1a, ut1b float64) float64 {
 func Gmsta0(ut1 float64) float64 {
 	return Gmsta(ut1, 0.0)
 }
+
+// Note: Calendar and epoch conversion functions (Caldj, Cldj, Djcal, Djcl, Epb, Epb2d, Epj, Epj2d)
+// are implemented in calendar.go to keep related functionality together.

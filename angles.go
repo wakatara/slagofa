@@ -243,6 +243,48 @@ func AngularSeparationVec(a, b Vec3) float64 {
 // Dsepv is a SLALIB-compatible alias for AngularSeparationVec (sla_DSEPV)
 var Dsepv = AngularSeparationVec
 
+// AngularSeparation32 computes the angular separation between two points
+// on a sphere (single precision).
+//
+// Original FORTRAN: sla_SEP by P.T. Wallace
+// Implementation: Converts float32 to float64, calls AngularSeparation
+//
+// Parameters:
+//   - a1: Longitude of first point (e.g., RA) in radians
+//   - b1: Latitude of first point (e.g., Dec) in radians
+//   - a2: Longitude of second point in radians
+//   - b2: Latitude of second point in radians
+//
+// Returns:
+//   - Angular separation in radians (always positive)
+func AngularSeparation32(a1, b1, a2, b2 float32) float32 {
+	return float32(gofa.Seps(float64(a1), float64(b1), float64(a2), float64(b2)))
+}
+
+// Sep is a SLALIB-compatible alias for AngularSeparation32 (sla_SEP)
+var Sep = AngularSeparation32
+
+// AngularSeparationVec32 computes the angular separation between two
+// direction vectors (single precision).
+//
+// Original FORTRAN: sla_SEPV by P.T. Wallace
+// Implementation: Converts Vec3_32 to Vec3, calls AngularSeparationVec
+//
+// Parameters:
+//   - a: First direction vector (need not be unit length)
+//   - b: Second direction vector (need not be unit length)
+//
+// Returns:
+//   - Angular separation in radians (always positive)
+func AngularSeparationVec32(a, b Vec3_32) float32 {
+	a64 := Vec3{float64(a[0]), float64(a[1]), float64(a[2])}
+	b64 := Vec3{float64(b[0]), float64(b[1]), float64(b[2])}
+	return float32(gofa.Sepp(a64, b64))
+}
+
+// Sepv is a SLALIB-compatible alias for AngularSeparationVec32 (sla_SEPV)
+var Sepv = AngularSeparationVec32
+
 // PositionAngle computes the position angle of one point with respect
 // to another, given as direction vectors.
 //

@@ -339,6 +339,62 @@ func TestAngularSeparationVec(t *testing.T) {
 	}
 }
 
+// TestAngularSeparation32 tests the single-precision Sep function
+//
+// Test vectors from SLALIB test suite (sla_test.cc lines 858-873)
+func TestAngularSeparation32(t *testing.T) {
+	// From sla_test.cc: vectors (1.0, 0.1, 0.2) and (-3.0, 0.001, 0.2)
+	// Convert to spherical coordinates, then test separation
+	v1 := Vec3{1.0, 0.1, 0.2}
+	v2 := Vec3{-3.0, 1.0e-3, 0.2}
+
+	// Convert to spherical (using double precision)
+	ra1, dec1 := CartesianToSpherical(v1)
+	ra2, dec2 := CartesianToSpherical(v2)
+
+	// Test single-precision version
+	sep := Sep(float32(ra1), float32(dec1), float32(ra2), float32(dec2))
+	expected := float32(2.8603919190246608)
+
+	// SLALIB tolerance for single precision is 1.0e-4
+	tolerance32 := float32(1.0e-4)
+	if math.Abs(float64(sep-expected)) > float64(tolerance32) {
+		t.Errorf("Sep = %.10f, want %.10f (diff: %.2e)",
+			sep, expected, math.Abs(float64(sep-expected)))
+	}
+
+	// Also test with AngularSeparation32
+	sep2 := AngularSeparation32(float32(ra1), float32(dec1), float32(ra2), float32(dec2))
+	if math.Abs(float64(sep2-expected)) > float64(tolerance32) {
+		t.Errorf("AngularSeparation32 = %.10f, want %.10f", sep2, expected)
+	}
+}
+
+// TestAngularSeparationVec32 tests the single-precision Sepv function
+//
+// Test vectors from SLALIB test suite (sla_test.cc lines 858-873)
+func TestAngularSeparationVec32(t *testing.T) {
+	// From sla_test.cc line 859-860
+	vf1 := Vec3_32{1.0, 0.1, 0.2}
+	vf2 := Vec3_32{-3.0, 1.0e-3, 0.2}
+
+	sep := Sepv(vf1, vf2)
+	expected := float32(2.8603919190246608)
+
+	// SLALIB tolerance for single precision is 1.0e-4
+	tolerance32 := float32(1.0e-4)
+	if math.Abs(float64(sep-expected)) > float64(tolerance32) {
+		t.Errorf("Sepv = %.10f, want %.10f (diff: %.2e)",
+			sep, expected, math.Abs(float64(sep-expected)))
+	}
+
+	// Also test with AngularSeparationVec32
+	sep2 := AngularSeparationVec32(vf1, vf2)
+	if math.Abs(float64(sep2-expected)) > float64(tolerance32) {
+		t.Errorf("AngularSeparationVec32 = %.10f, want %.10f", sep2, expected)
+	}
+}
+
 func TestPositionAngle(t *testing.T) {
 	// Test position angle of unit vectors
 	v1 := Vec3{1, 0, 0}
@@ -399,5 +455,20 @@ func BenchmarkNormalizeAnglePositive(b *testing.B) {
 func BenchmarkAngularSeparation(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		_ = AngularSeparation(0, 0, 1.5, 0.3)
+	}
+}
+
+func BenchmarkAngularSeparation32(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = AngularSeparation32(0, 0, 1.5, 0.3)
+	}
+}
+
+func BenchmarkAngularSeparationVec32(b *testing.B) {
+	v1 := Vec3_32{1.0, 0.1, 0.2}
+	v2 := Vec3_32{-3.0, 1.0e-3, 0.2}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = AngularSeparationVec32(v1, v2)
 	}
 }

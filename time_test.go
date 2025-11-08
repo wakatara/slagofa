@@ -316,3 +316,10 @@ func BenchmarkGmsta(b *testing.B) {
 		_ = Gmsta(mjd, 0.0)
 	}
 }
+
+//
+// Note: Tests for calendar and epoch conversion functions (Caldj, Cldj, Djcal, Djcl,
+// Epb, Epb2d, Epj, Epj2d) are in calendar_test.go where those functions are implemented.
+// This file only contains tests for time scale functions (Dtt, DeltaT, Gmst, Gmsta).
+//
+

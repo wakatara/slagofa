@@ -58,6 +58,56 @@ func Djcl(djm float64) (iy, im, id int, fd float64, status int) {
 	return iy, im, id, fd, status
 }
 
+// Djcal converts Modified Julian Date to Gregorian calendar with formatted output
+//
+// Original FORTRAN: sla_DJCAL by P.T. Wallace
+// GoFA equivalent: gofa.Jd2cal (with formatting)
+//
+// Parameters:
+//   - ndp: Number of decimal places for fraction (recommend ≤ 4 to avoid overflow)
+//   - djm: Modified Julian Date (JD - 2400000.5)
+//
+// Returns:
+//   - iy: Year in Gregorian calendar
+//   - im: Month (1-12)
+//   - id: Day (1-31)
+//   - fraction: Fraction of day scaled to ndp decimal places (as integer)
+//   - status: 0 = OK, non-zero = out of range
+//
+// Notes:
+//   - Any date after 4701 BC March 1 is accepted
+//   - ndp should be 4 or less to avoid integer overflow on 32-bit systems
+//   - The fraction is scaled: for ndp=4, 0.9999 days → 9999
+//   - This format is convenient for formatted output
+//
+// Example:
+//   - MJD 50123.9999 with ndp=4 → (1996, 2, 10, 9999, 0)
+func Djcal(ndp int, djm float64) (iy, im, id int, fraction int, status int) {
+	// Get calendar date and fractional day
+	var fd float64
+	status = gofa.Jd2cal(gofa.DJM0, djm, &iy, &im, &id, &fd)
+	if status != 0 {
+		return iy, im, id, 0, status
+	}
+
+	// Validate ndp
+	if ndp < 0 || ndp > 9 {
+		return iy, im, id, 0, -1
+	}
+
+	// Scale fraction to ndp decimal places
+	// For ndp=4: 0.9999 * 10000 = 9999
+	scale := 1.0
+	for i := 0; i < ndp; i++ {
+		scale *= 10.0
+	}
+
+	// Round to nearest integer
+	fraction = int(fd*scale + 0.5)
+
+	return iy, im, id, fraction, 0
+}
+
 // Caldj converts Gregorian calendar date to Modified Julian Date with 2-digit year handling
 //
 // Original FORTRAN: sla_CALDJ by P.T. Wallace

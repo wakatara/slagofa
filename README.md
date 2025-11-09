@@ -1,7 +1,8 @@
 # slagofa - SLALIB-Compatible API for GoFA
 
-A Go library providing a sla_DVNLALIB-compatible API layer on top of the International
-Astronomic Union's standard [GoFA](https://github.com/hebl/gofa) (Golang Standards Of Fundamental Astronomy) library.
+A Go library providing a sla_DVNLALIB-compatible API layer on top of the
+International Astronomic Union's standard [GoFA](https://github.com/hebl/gofa)
+(Golang Standards Of Fundamental Astronomy) library.
 
 `slagofa` seeks to provide a modern, accessible, drop-in, and maintainable
 replacement for astronomers preferring or having code dependent on the SLA
@@ -20,12 +21,14 @@ for older code bases that are using `slalib.so`
 
 THIS IS CURRENTLY A WORK IN PROGRESS.
 
-SLALin contains 191 functions overall.
+SLALIB contains 190 functions overall.
 
-Of these 191, at Nov 5th, 2025:
+Of these 190, as of Nov 8th, 2025:
 
-- 31 implemented (16.2%) with verified SLALIB-compatible aliases
-- 160 remaining (83.8%) to be implemented
+- **92 implemented (48.4%)** with verified SLALIB-compatible aliases
+- 98 remaining (51.6%) to be implemented
+
+**Verification:** Run `./check_aliases.sh` to verify all functions have SLALIB aliases
 
 ## Overview
 
@@ -247,8 +250,44 @@ MIT License (see [LICENSE](LICENSE))
 
 ## Citation
 
-If you use slagofa in your research, please cite:
+If you use `slagofa` in your research, please consider citing it and:
 
 - The GoFA library
 - The IAU SOFA library
 - The original SLALIB: Wallace, P.T., "SLALIB - A Library of Subroutines"
+
+## Testing & Validation
+
+We track **deviation from SLALIB test vectors** for every test to ensure accuracy.
+
+### Test Accuracy Tracking
+
+Every test records its deviation from the original SLALIB test suite:
+
+```go
+AssertAlmostEqual(t, "NormalizeAngle", "test description",
+    FormatSLALIBSource("sla_test.cc", 514),
+    result, expected, tolerance)
+```
+
+This provides:
+
+- **Perfect match tracking** - Identifies zero-deviation tests
+- **Deviation analysis** - Shows largest deviations even in passing tests
+- **Source attribution** - Every test cites sla_test.f or sla_test.cc line numbers
+- **Per-function accuracy** - Summary statistics by function
+
+### Running Tests with Deviation Reports
+
+```bash
+# Run all tests with deviation tracking
+go test -v
+
+# Generate deviation summary
+go test -v -run TestDeviationReport
+
+# Full test validation report
+./test_validation_report.sh
+```
+
+**See [TESTING.md](TESTING.md) for complete testing guide.**

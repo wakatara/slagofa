@@ -118,3 +118,11 @@ func wait(delay float64) {
 	// Implementation note: In Go, use time.Sleep(time.Duration(delay * float64(time.Second)))
 	// We don't implement this as it's not commonly needed and time.Sleep is preferred
 }
+
+// SLALIB-compatible lowercase aliases
+
+// combn is a SLALIB-compatible alias for Combn (sla_COMBN)
+var combn = Combn
+
+// permut is a SLALIB-compatible alias for Permut (sla_PERMUT)
+var permut = Permut

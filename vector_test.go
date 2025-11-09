@@ -9,6 +9,8 @@ const tolerance = 1.0e-12
 const tolerance32 = 1.0e-6
 
 func almostEqual(a, b, tol float64) bool {
+	// Automatically track deviation for reporting
+	autoTrackDeviation(a, b, tol)
 	return math.Abs(a-b) <= tol
 }
 

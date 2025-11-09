@@ -376,3 +376,38 @@ func Geoc(phi, height float64) (rho, z float64) {
 
 	return rho, z
 }
+
+// SLALIB-compatible lowercase aliases
+
+// cc2s is a SLALIB-compatible alias for Cc2s (sla_CC2S)
+var cc2s = Cc2s
+
+// cs2c is a SLALIB-compatible alias for Cs2c (sla_CS2C)
+var cs2c = Cs2c
+
+// dcc2s is a SLALIB-compatible alias for Dcc2s (sla_DCC2S)
+var dcc2s = Dcc2s
+
+// dcs2c is a SLALIB-compatible alias for Dcs2c (sla_DCS2C)
+var dcs2c = Dcs2c
+
+// de2h is a SLALIB-compatible alias for De2h (sla_DE2H)
+var de2h = De2h
+
+// dh2e is a SLALIB-compatible alias for Dh2e (sla_DH2E)
+var dh2e = Dh2e
+
+// ecleq is a SLALIB-compatible alias for Ecleq (sla_ECLEQ)
+var ecleq = Ecleq
+
+// eqecl is a SLALIB-compatible alias for Eqecl (sla_EQECL)
+var eqecl = Eqecl
+
+// eqgal is a SLALIB-compatible alias for Eqgal (sla_EQGAL)
+var eqgal = Eqgal
+
+// galeq is a SLALIB-compatible alias for Galeq (sla_GALEQ)
+var galeq = Galeq
+
+// geoc is a SLALIB-compatible alias for Geoc (sla_GEOC)
+var geoc = Geoc

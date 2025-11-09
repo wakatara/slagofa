@@ -217,3 +217,11 @@ func atan2(y, x float64) float64 {
 func atan(x float64) float64 {
 	return math.Atan(x)
 }
+
+// SLALIB-compatible lowercase aliases
+
+// dcmpf is a SLALIB-compatible alias for Dcmpf (sla_DCMPF)
+var dcmpf = Dcmpf
+
+// dmat is a SLALIB-compatible alias for Dmat (sla_DMAT)
+var dmat = Dmat

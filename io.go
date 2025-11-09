@@ -294,3 +294,20 @@ func Gresid(year, month, day int) float64 {
 func isWhitespace(c byte) bool {
 	return c == ' ' || c == '\t' || c == '\n' || c == '\r'
 }
+
+// SLALIB-compatible lowercase aliases
+
+// dafin is a SLALIB-compatible alias for Dafin (sla_DAFIN)
+var dafin = Dafin
+
+// dfltin is a SLALIB-compatible alias for Dfltin (sla_DFLTIN)
+var dfltin = Dfltin
+
+// flotin is a SLALIB-compatible alias for Flotin (sla_FLOTIN)
+var flotin = Flotin
+
+// intin is a SLALIB-compatible alias for Intin (sla_INTIN)
+var intin = Intin
+
+// obs is a SLALIB-compatible alias for Obs (sla_OBS)
+var obs = Obs

@@ -331,3 +331,17 @@ func Xy2xy(x, y float64, coeffs FitxyCoeffs) (xp, yp float64) {
 	yp = coeffs.D + coeffs.E*x + coeffs.F*y
 	return xp, yp
 }
+
+// SLALIB-compatible lowercase aliases
+
+// fitxy is a SLALIB-compatible alias for Fitxy (sla_FITXY)
+var fitxy = Fitxy
+
+// invf is a SLALIB-compatible alias for Invf (sla_INVF)
+var invf = Invf
+
+// pxy is a SLALIB-compatible alias for Pxy (sla_PXY)
+var pxy = Pxy
+
+// xy2xy is a SLALIB-compatible alias for Xy2xy (sla_XY2XY)
+var xy2xy = Xy2xy

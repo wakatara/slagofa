@@ -184,3 +184,17 @@ func Dtpv2c(xi, eta float64, v Vec3) (v01, v02 Vec3, n int) {
 	n = gofa.Tporv(xi, eta, v, &result1, &result2)
 	return Vec3(result1), Vec3(result2), n
 }
+
+// SLALIB-compatible lowercase aliases
+
+// ds2tp is a SLALIB-compatible alias for Ds2tp (sla_DS2TP)
+var ds2tp = Ds2tp
+
+// dtp2s is a SLALIB-compatible alias for Dtp2s (sla_DTP2S)
+var dtp2s = Dtp2s
+
+// dtps2c is a SLALIB-compatible alias for Dtps2c (sla_DTPS2C)
+var dtps2c = Dtps2c
+
+// dtpv2c is a SLALIB-compatible alias for Dtpv2c (sla_DTPV2C)
+var dtpv2c = Dtpv2c

@@ -304,3 +304,35 @@ func Epj2d(epj float64) float64 {
 	// Return MJD part only
 	return djm
 }
+
+// SLALIB-compatible lowercase aliases
+
+// caldj is a SLALIB-compatible alias for Caldj (sla_CALDJ)
+var caldj = Caldj
+
+// cldj is a SLALIB-compatible alias for Cldj (sla_CLDJ)
+var cldj = Cldj
+
+// djcl is a SLALIB-compatible alias for Djcl (sla_DJCL)
+var djcl = Djcl
+
+// djcal is a SLALIB-compatible alias for Djcal (sla_DJCAL)
+var djcal = Djcal
+
+// calyd is a SLALIB-compatible alias for Calyd (sla_CALYD)
+var calyd = Calyd
+
+// clyd is a SLALIB-compatible alias for Clyd (sla_CLYD)
+var clyd = Clyd
+
+// epb is a SLALIB-compatible alias for Epb (sla_EPB)
+var epb = Epb
+
+// epb2d is a SLALIB-compatible alias for Epb2d (sla_EPB2D)
+var epb2d = Epb2d
+
+// epj is a SLALIB-compatible alias for Epj (sla_EPJ)
+var epj = Epj
+
+// epj2d is a SLALIB-compatible alias for Epj2d (sla_EPJ2D)
+var epj2d = Epj2d

@@ -234,3 +234,11 @@ func Vn(v Vec3_32) (Vec3_32, float32) {
 func Magnitude32(v Vec3_32) float32 {
 	return float32(math.Sqrt(float64(v[0]*v[0] + v[1]*v[1] + v[2]*v[2])))
 }
+
+// SLALIB-compatible lowercase aliases
+
+// dvn is a SLALIB-compatible alias for Dvn (sla_DVN)
+var dvn = Dvn
+
+// vn is a SLALIB-compatible alias for Vn (sla_VN)
+var vn = Vn

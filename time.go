@@ -175,3 +175,14 @@ func Gmsta0(ut1 float64) float64 {
 
 // Note: Calendar and epoch conversion functions (Caldj, Cldj, Djcal, Djcl, Epb, Epb2d, Epj, Epj2d)
 // are implemented in calendar.go to keep related functionality together.
+
+// SLALIB-compatible lowercase aliases
+
+// dtt is a SLALIB-compatible alias for Dtt (sla_DTT)
+var dtt = Dtt
+
+// gmst is a SLALIB-compatible alias for Gmst (sla_GMST)
+var gmst = Gmst
+
+// gmsta is a SLALIB-compatible alias for Gmsta (sla_GMSTA)
+var gmsta = Gmsta

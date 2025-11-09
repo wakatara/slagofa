@@ -363,3 +363,23 @@ func NormalizeAnglePositive32(angle float32) float32 {
 
 // Ranorm is a SLALIB-compatible alias for NormalizeAnglePositive32 (sla_RANORM)
 var Ranorm = NormalizeAnglePositive32
+
+// Additional SLALIB-compatible lowercase aliases
+
+// daf2r is a SLALIB-compatible alias for Daf2r (sla_DAF2R)
+var daf2r = Daf2r
+
+// dd2tf is a SLALIB-compatible alias for Dd2tf (sla_DD2TF)
+var dd2tf = Dd2tf
+
+// dr2af is a SLALIB-compatible alias for Dr2af (sla_DR2AF)
+var dr2af = Dr2af
+
+// dr2tf is a SLALIB-compatible alias for Dr2tf (sla_DR2TF)
+var dr2tf = Dr2tf
+
+// dtf2d is a SLALIB-compatible alias for Dtf2d (sla_DTF2D)
+var dtf2d = Dtf2d
+
+// dtf2r is a SLALIB-compatible alias for Dtf2r (sla_DTF2R)
+var dtf2r = Dtf2r

@@ -605,3 +605,26 @@ func Pa(ha, dec, phi float64) float64 {
 
 	return pa
 }
+
+// SLALIB-compatible lowercase aliases
+
+// airmas is a SLALIB-compatible alias for Airmas (sla_AIRMAS)
+var airmas = Airmas
+
+// pa is a SLALIB-compatible alias for Pa (sla_PA)
+var pa = Pa
+
+// refco is a SLALIB-compatible alias for Refco (sla_REFCO)
+var refco = Refco
+
+// refcoq is a SLALIB-compatible alias for Refcoq (sla_REFCOQ)
+var refcoq = Refcoq
+
+// refro is a SLALIB-compatible alias for Refro (sla_REFRO)
+var refro = Refro
+
+// refv is a SLALIB-compatible alias for Refv (sla_REFV)
+var refv = Refv
+
+// refz is a SLALIB-compatible alias for Refz (sla_REFZ)
+var refz = Refz
